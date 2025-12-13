@@ -1,0 +1,38 @@
+security:
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    password_hashers:
+        App\Entity\User:
+            algorithm: auto
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            lazy: true
+            provider: app_user_provider
+            form_login:
+                login_path: /login
+                check_path: /login
+                username_parameter: _username
+                password_parameter: _password
+                enable_csrf: false
+                success_handler: App\Security\LoginSuccessHandler
+            logout:
+                path: /logout
+
+    access_control:
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/logout, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/me, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api$, roles: ROLE_ADMIN }
+        - { path: ^/api, roles: ROLE_ADMIN, methods: [POST, DELETE] }
+        - { path: ^/api, roles: PUBLIC_ACCESS, methods: [GET] }
+        - { path: ^/ajouter-film, roles: ROLE_ADMIN }
+        - { path: ^/$, roles: PUBLIC_ACCESS }

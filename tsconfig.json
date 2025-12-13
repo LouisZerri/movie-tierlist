@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "outDir": "./public/build"
+  },
+  "include": ["assets/**/*"]
+}
