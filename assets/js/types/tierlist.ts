@@ -5,4 +5,5 @@ export type TierListType = {
     tier: string;
     year: number;
     movie: Movie;
+    position: number;
 };

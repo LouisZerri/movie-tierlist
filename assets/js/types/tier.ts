@@ -1,11 +1,15 @@
-import {Movie} from "./movies";
+import { Movie } from "./movies";
+
+export interface TierMovie extends Movie {
+    tierListId?: number;
+}
 
 export type Tier = {
     letter: string;
     title: string;
     description: string;
     color: string;
-    movies: Movie[];
+    movies: TierMovie[];
 }
 
 export const initialTiers: Tier[] = [

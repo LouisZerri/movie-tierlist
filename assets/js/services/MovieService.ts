@@ -20,6 +20,7 @@ function getMoviesByYear(year: number): Promise<Movie[]> {
 // Ajouter un film dans l'API
 function addMovie(movie: Partial<Movie>): Promise<void> {
     return Axios.post(MOVIES_API, movie, {
+        withCredentials: true,
         headers: {
             'Content-Type': 'application/ld+json'
         }
